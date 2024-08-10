@@ -1,0 +1,127 @@
+
+units:
+  # Proxy Spacing Variables
+  kx: u
+  ky: u
+  # Padding Variables
+  px: kx + 6
+  py: ky + 6
+points:
+  zones:
+    main:
+      key:
+        padding: 1ky
+        spread: 1kx
+      rows:
+        mod:
+        alpha_bot:
+        alpha_mid:
+        alpha_top:
+        number:
+
+      columns:
+        farleft:
+        pinky:      
+        ring:
+          key:
+            stagger: 5
+        middle:
+          key:
+            stagger: 2.5
+        index:
+          key:
+            stagger: -2.5
+        farright:
+          key:
+            stagger: -2.5
+    thumb:
+      key:
+        padding: 1ky
+        spread: 1kx
+      anchor:
+        ref: main_farright_mod
+        shift: [-14,-20]
+        rotate: 0
+      rows:
+        bottom:
+        middle:
+        top:
+      columns:
+        thumbL:
+          key:
+            rotate: 0
+            splay: 0
+            stagger: -0
+          rows.middle.skip: true
+          rows.top.skip: true
+        thumbC:
+          key:
+            shift: [2,0]
+            splay: 10
+          rows.middle.skip: true
+          rows.top.skip: true
+        thumbR:
+          key:
+            rotate: 
+            splay: 15
+            shift: [11,0]
+            stagger: 0
+          rows:
+            bottom:
+              width: 1.5kx
+              rotate: 20
+
+            middle: 
+              rotate: -20
+              shift: [10, 5]
+          
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      bound: false
+      size: [kx-0.5,ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+      - ref: main_farleft_number
+        shift: [-0.5px,0.5py]
+      - ref: main_ring_number
+        shift: [-0.5px,0.5py]
+      - ref: main_middle_number
+        shift: [-0.5px,0.5py]
+      - ref: main_middle_number
+        shift: [0.5px,0.5py]
+      - ref: main_farright_number
+        shift: [0.5px,0.5py]
+      - ref: thumb_thumbR_top
+        shift: [0.5px,0.5py]
+      - ref: thumb_thumbR_top
+        shift: [0.5px,-0.5py]
+      - ref: thumb_thumbR_bottom
+        shift: [0.5px,-0.5py]
+      - ref: thumb_thumbR_bottom
+        shift: [-0.5px,-0.5py - 4]
+      - ref: thumb_thumbL_bottom
+        shift: [-0.5px,-0.5py]
+      - ref: thumb_thumbL_bottom
+        shift: [-0.5px,0.2py]
+      - ref: main_pinky_mod
+        shift: [0.5px,-0.5py]
+      - ref: main_farleft_mod
+        shift: [-0.5px,-0.5py]
+        
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+
+
+
+
+
